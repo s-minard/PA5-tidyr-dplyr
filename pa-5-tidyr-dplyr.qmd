@@ -168,7 +168,7 @@ format to long format. To do this process we need three arguments:
 data, those are all the columns from `1988` to `2019`.
 
 + `names_to`: The name of the variable that should be created to move these
-columns into. In these data, this could be `"year"`.
+columns into. In these data, this could be `"yea"r`.
 
 + `values_to`: The name of the variable that should be created to move these
 column's values into. In these data, this could be labeled `"spending"`.
@@ -180,7 +180,8 @@ Hint: **Do not** overwrite your cleaned up dataset!
 
 ```{r}
 #| label: pivoting-military-data-longer
-
+military_long <- military_clean |> 
+  pivot_longer(4:35, names_to = "year", values_to = "spending")
 
 ```
 
