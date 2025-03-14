@@ -1,6 +1,6 @@
 ---
 title: "PA 5: Military Spending"
-author: "The names of your group members go here!"
+author: "Sam M. & Cherie W."
 format: html
 embed-resources: true
 code-tools: true
@@ -78,21 +78,11 @@ data.
 ```{r}
 #| label: read-in-military-data
 
-<<<<<<< HEAD
 military <- read_xlsx("data/data-raw/gov_spending_per_capita.xlsx",  #read the spreadsheet
                       sheet = "Share of Govt. spending",    #select the share of gov't sheet
                       skip  = 7,                            #skip the first 7 rows 
                       n_max = 191,                          #only include up to rows 191
                       na = c("xxx", ". ."))                  #specify which values to treat as NA
-
-military
-=======
-military <- read_xlsx("data/gov_spending_per_capita.xlsx",  #read the spreadsheet
-                      sheet = "Share of Govt. spending",    #select the share of gov't sheet
-                      skip  = 7,                            #skip the first 7 rows 
-                      n_max = 191,                          #only include up to rows 191
-                      na = c("xxx", ".."))                  #specify which values to treat as NA
->>>>>>> 53ce030c62d8adb790e8bd9a32cbb278d80bec7f
 ```
 
 *I would highly recommend you open the dataset in Excel, so you can see the data layout!*
@@ -113,11 +103,8 @@ Run the code below to read in the *"Regional totals"* data.
 
 ```{r}
 #| label: regional-totals
-<<<<<<< HEAD
+
 cont_region <- read_xlsx("data/data-raw/gov_spending_per_capita.xlsx", 
-=======
-cont_region <- read_xlsx("data/gov_spending_per_capita.xlsx", 
->>>>>>> 53ce030c62d8adb790e8bd9a32cbb278d80bec7f
                       sheet = "Regional totals", 
                       skip = 14,
                       n_max = 36) |> 
@@ -144,7 +131,7 @@ military_clean <- military |>
 
 **2. Write a sentence describing what the line of code `filter(!Country %in% regions)` is doing in the context of the data.**  
 
->Insert Answer Here
+>It removes continents/region names from the Country variable in the new military_clean data frame.
 
 
 ### Canvas Question #1
@@ -157,8 +144,8 @@ military_clean <- military |>
 #| label: inspecting-what-regions-were-not-removed
 
 military_clean |> 
-  filter(if_all(.cols = _________,   #hint: what is the easiest way to include every column except `Country`
-                .fns = __________)   #hint: what function in R (there are several) tests if a value is missing or is NA?
+  filter(if_all(.cols = -Country,   #hint: what is the easiest way to include every column except `Country`
+                .fns = is.na)   #hint: what function in R (there are several) tests if a value is missing or is NA?
          )
 ```
 
